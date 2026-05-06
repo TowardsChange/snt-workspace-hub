@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import architectureDiagram from "@/assets/architecture.png";
 
 export const Route = createFileRoute("/offer/architecture")({
   component: ArchitecturePage,
