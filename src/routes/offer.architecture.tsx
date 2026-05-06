@@ -1,9 +1,33 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Scale, ShieldCheck, MapPin, Lock } from "lucide-react";
 import architectureDiagram from "@/assets/architecture.png";
 
 export const Route = createFileRoute("/offer/architecture")({
   component: ArchitecturePage,
 });
+
+const pillars = [
+  {
+    icon: Scale,
+    title: "Conforme EU AI Act",
+    sub: "Supervision humaine, journalisation et robustesse (Art. 12 / 14 / 15).",
+  },
+  {
+    icon: ShieldCheck,
+    title: "RGPD dès la conception",
+    sub: "Chiffrement bout-en-bout, journal d'accès, droit à l'effacement.",
+  },
+  {
+    icon: MapPin,
+    title: "100 % France Central",
+    sub: "Données et inférence sur le sol français, sans transit hors UE.",
+  },
+  {
+    icon: Lock,
+    title: "Zéro tiers IA",
+    sub: "Azure OpenAI dans votre tenant. Aucune donnée n'atteint OpenAI Inc.",
+  },
+];
 
 const summary = [
   { label: "Région", value: "France Central", sub: "100 % souveraineté FR" },
@@ -46,6 +70,54 @@ function ArchitecturePage() {
           </p>
         </div>
 
+        {/* Trust pillars */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {pillars.map((p) => {
+            const Icon = p.icon;
+            return (
+              <div
+                key={p.title}
+                className="rounded-xl border p-4 space-y-2"
+                style={{ background: "var(--surface)", borderColor: "var(--border)" }}
+              >
+                <div
+                  className="flex items-center justify-center rounded-lg"
+                  style={{
+                    width: 32,
+                    height: 32,
+                    background: "var(--accent-soft)",
+                    color: "var(--accent)",
+                  }}
+                >
+                  <Icon size={18} />
+                </div>
+                <div className="text-foreground font-bold" style={{ fontSize: 15, lineHeight: 1.3 }}>
+                  {p.title}
+                </div>
+                <div className="text-muted-foreground" style={{ fontSize: 13, lineHeight: 1.45 }}>
+                  {p.sub}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Diagram image */}
+        <div
+          className="rounded-2xl overflow-hidden border"
+          style={{
+            background: "var(--surface)",
+            borderColor: "var(--border)",
+            boxShadow: "0 1px 2px rgba(16,24,40,0.04), 0 8px 24px rgba(16,24,40,0.04)",
+          }}
+        >
+          <img
+            src={architectureDiagram}
+            alt="Architecture SpieB.ai sur Azure France Central"
+            className="w-full h-auto block"
+          />
+        </div>
+
         {/* Summary card */}
         <div
           className="rounded-2xl border grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y md:divide-y-0 md:divide-x"
@@ -80,22 +152,6 @@ function ArchitecturePage() {
               <span className="text-sm text-foreground">{l.label}</span>
             </div>
           ))}
-        </div>
-
-        {/* Diagram image */}
-        <div
-          className="rounded-2xl overflow-hidden border"
-          style={{
-            background: "var(--surface)",
-            borderColor: "var(--border)",
-            boxShadow: "0 1px 2px rgba(16,24,40,0.04), 0 8px 24px rgba(16,24,40,0.04)",
-          }}
-        >
-          <img
-            src={architectureDiagram}
-            alt="Architecture SpieB.ai sur Azure France Central"
-            className="w-full h-auto block"
-          />
         </div>
 
         <div className="pt-4 text-xs text-muted-foreground">
