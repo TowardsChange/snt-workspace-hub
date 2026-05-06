@@ -9,38 +9,399 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WritingRouteImport } from './routes/writing'
+import { Route as TeamsRouteImport } from './routes/teams'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as LibrariesRouteImport } from './routes/libraries'
+import { Route as HomeRouteImport } from './routes/home'
+import { Route as HelpRouteImport } from './routes/help'
+import { Route as DocumentsRouteImport } from './routes/documents'
+import { Route as ConversationsRouteImport } from './routes/conversations'
+import { Route as ComplianceRouteImport } from './routes/compliance'
+import { Route as CompareRouteImport } from './routes/compare'
+import { Route as AgentsRouteImport } from './routes/agents'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LibrariesGuidedRouteImport } from './routes/libraries.guided'
+import { Route as LibrariesAiRouteImport } from './routes/libraries.ai'
+import { Route as ConversationsIdRouteImport } from './routes/conversations.$id'
+import { Route as CompareBidSetIdRouteImport } from './routes/compare.$bidSetId'
+import { Route as AgentsNewRouteImport } from './routes/agents.new'
+import { Route as AgentsAgentIdRouteImport } from './routes/agents.$agentId'
+import { Route as DocumentsFoldersFolderIdRouteImport } from './routes/documents.folders.$folderId'
+import { Route as DocumentsFilesFileIdRouteImport } from './routes/documents.files.$fileId'
 
+const WritingRoute = WritingRouteImport.update({
+  id: '/writing',
+  path: '/writing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamsRoute = TeamsRouteImport.update({
+  id: '/teams',
+  path: '/teams',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LibrariesRoute = LibrariesRouteImport.update({
+  id: '/libraries',
+  path: '/libraries',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HomeRoute = HomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HelpRoute = HelpRouteImport.update({
+  id: '/help',
+  path: '/help',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocumentsRoute = DocumentsRouteImport.update({
+  id: '/documents',
+  path: '/documents',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConversationsRoute = ConversationsRouteImport.update({
+  id: '/conversations',
+  path: '/conversations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComplianceRoute = ComplianceRouteImport.update({
+  id: '/compliance',
+  path: '/compliance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompareRoute = CompareRouteImport.update({
+  id: '/compare',
+  path: '/compare',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AgentsRoute = AgentsRouteImport.update({
+  id: '/agents',
+  path: '/agents',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LibrariesGuidedRoute = LibrariesGuidedRouteImport.update({
+  id: '/guided',
+  path: '/guided',
+  getParentRoute: () => LibrariesRoute,
+} as any)
+const LibrariesAiRoute = LibrariesAiRouteImport.update({
+  id: '/ai',
+  path: '/ai',
+  getParentRoute: () => LibrariesRoute,
+} as any)
+const ConversationsIdRoute = ConversationsIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => ConversationsRoute,
+} as any)
+const CompareBidSetIdRoute = CompareBidSetIdRouteImport.update({
+  id: '/$bidSetId',
+  path: '/$bidSetId',
+  getParentRoute: () => CompareRoute,
+} as any)
+const AgentsNewRoute = AgentsNewRouteImport.update({
+  id: '/new',
+  path: '/new',
+  getParentRoute: () => AgentsRoute,
+} as any)
+const AgentsAgentIdRoute = AgentsAgentIdRouteImport.update({
+  id: '/$agentId',
+  path: '/$agentId',
+  getParentRoute: () => AgentsRoute,
+} as any)
+const DocumentsFoldersFolderIdRoute =
+  DocumentsFoldersFolderIdRouteImport.update({
+    id: '/folders/$folderId',
+    path: '/folders/$folderId',
+    getParentRoute: () => DocumentsRoute,
+  } as any)
+const DocumentsFilesFileIdRoute = DocumentsFilesFileIdRouteImport.update({
+  id: '/files/$fileId',
+  path: '/files/$fileId',
+  getParentRoute: () => DocumentsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/agents': typeof AgentsRouteWithChildren
+  '/compare': typeof CompareRouteWithChildren
+  '/compliance': typeof ComplianceRoute
+  '/conversations': typeof ConversationsRouteWithChildren
+  '/documents': typeof DocumentsRouteWithChildren
+  '/help': typeof HelpRoute
+  '/home': typeof HomeRoute
+  '/libraries': typeof LibrariesRouteWithChildren
+  '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
+  '/settings': typeof SettingsRoute
+  '/teams': typeof TeamsRoute
+  '/writing': typeof WritingRoute
+  '/agents/$agentId': typeof AgentsAgentIdRoute
+  '/agents/new': typeof AgentsNewRoute
+  '/compare/$bidSetId': typeof CompareBidSetIdRoute
+  '/conversations/$id': typeof ConversationsIdRoute
+  '/libraries/ai': typeof LibrariesAiRoute
+  '/libraries/guided': typeof LibrariesGuidedRoute
+  '/documents/files/$fileId': typeof DocumentsFilesFileIdRoute
+  '/documents/folders/$folderId': typeof DocumentsFoldersFolderIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/agents': typeof AgentsRouteWithChildren
+  '/compare': typeof CompareRouteWithChildren
+  '/compliance': typeof ComplianceRoute
+  '/conversations': typeof ConversationsRouteWithChildren
+  '/documents': typeof DocumentsRouteWithChildren
+  '/help': typeof HelpRoute
+  '/home': typeof HomeRoute
+  '/libraries': typeof LibrariesRouteWithChildren
+  '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
+  '/settings': typeof SettingsRoute
+  '/teams': typeof TeamsRoute
+  '/writing': typeof WritingRoute
+  '/agents/$agentId': typeof AgentsAgentIdRoute
+  '/agents/new': typeof AgentsNewRoute
+  '/compare/$bidSetId': typeof CompareBidSetIdRoute
+  '/conversations/$id': typeof ConversationsIdRoute
+  '/libraries/ai': typeof LibrariesAiRoute
+  '/libraries/guided': typeof LibrariesGuidedRoute
+  '/documents/files/$fileId': typeof DocumentsFilesFileIdRoute
+  '/documents/folders/$folderId': typeof DocumentsFoldersFolderIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/agents': typeof AgentsRouteWithChildren
+  '/compare': typeof CompareRouteWithChildren
+  '/compliance': typeof ComplianceRoute
+  '/conversations': typeof ConversationsRouteWithChildren
+  '/documents': typeof DocumentsRouteWithChildren
+  '/help': typeof HelpRoute
+  '/home': typeof HomeRoute
+  '/libraries': typeof LibrariesRouteWithChildren
+  '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
+  '/settings': typeof SettingsRoute
+  '/teams': typeof TeamsRoute
+  '/writing': typeof WritingRoute
+  '/agents/$agentId': typeof AgentsAgentIdRoute
+  '/agents/new': typeof AgentsNewRoute
+  '/compare/$bidSetId': typeof CompareBidSetIdRoute
+  '/conversations/$id': typeof ConversationsIdRoute
+  '/libraries/ai': typeof LibrariesAiRoute
+  '/libraries/guided': typeof LibrariesGuidedRoute
+  '/documents/files/$fileId': typeof DocumentsFilesFileIdRoute
+  '/documents/folders/$folderId': typeof DocumentsFoldersFolderIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/agents'
+    | '/compare'
+    | '/compliance'
+    | '/conversations'
+    | '/documents'
+    | '/help'
+    | '/home'
+    | '/libraries'
+    | '/login'
+    | '/notifications'
+    | '/settings'
+    | '/teams'
+    | '/writing'
+    | '/agents/$agentId'
+    | '/agents/new'
+    | '/compare/$bidSetId'
+    | '/conversations/$id'
+    | '/libraries/ai'
+    | '/libraries/guided'
+    | '/documents/files/$fileId'
+    | '/documents/folders/$folderId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/agents'
+    | '/compare'
+    | '/compliance'
+    | '/conversations'
+    | '/documents'
+    | '/help'
+    | '/home'
+    | '/libraries'
+    | '/login'
+    | '/notifications'
+    | '/settings'
+    | '/teams'
+    | '/writing'
+    | '/agents/$agentId'
+    | '/agents/new'
+    | '/compare/$bidSetId'
+    | '/conversations/$id'
+    | '/libraries/ai'
+    | '/libraries/guided'
+    | '/documents/files/$fileId'
+    | '/documents/folders/$folderId'
+  id:
+    | '__root__'
+    | '/'
+    | '/agents'
+    | '/compare'
+    | '/compliance'
+    | '/conversations'
+    | '/documents'
+    | '/help'
+    | '/home'
+    | '/libraries'
+    | '/login'
+    | '/notifications'
+    | '/settings'
+    | '/teams'
+    | '/writing'
+    | '/agents/$agentId'
+    | '/agents/new'
+    | '/compare/$bidSetId'
+    | '/conversations/$id'
+    | '/libraries/ai'
+    | '/libraries/guided'
+    | '/documents/files/$fileId'
+    | '/documents/folders/$folderId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AgentsRoute: typeof AgentsRouteWithChildren
+  CompareRoute: typeof CompareRouteWithChildren
+  ComplianceRoute: typeof ComplianceRoute
+  ConversationsRoute: typeof ConversationsRouteWithChildren
+  DocumentsRoute: typeof DocumentsRouteWithChildren
+  HelpRoute: typeof HelpRoute
+  HomeRoute: typeof HomeRoute
+  LibrariesRoute: typeof LibrariesRouteWithChildren
+  LoginRoute: typeof LoginRoute
+  NotificationsRoute: typeof NotificationsRoute
+  SettingsRoute: typeof SettingsRoute
+  TeamsRoute: typeof TeamsRoute
+  WritingRoute: typeof WritingRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/writing': {
+      id: '/writing'
+      path: '/writing'
+      fullPath: '/writing'
+      preLoaderRoute: typeof WritingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/teams': {
+      id: '/teams'
+      path: '/teams'
+      fullPath: '/teams'
+      preLoaderRoute: typeof TeamsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/libraries': {
+      id: '/libraries'
+      path: '/libraries'
+      fullPath: '/libraries'
+      preLoaderRoute: typeof LibrariesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/home': {
+      id: '/home'
+      path: '/home'
+      fullPath: '/home'
+      preLoaderRoute: typeof HomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/help': {
+      id: '/help'
+      path: '/help'
+      fullPath: '/help'
+      preLoaderRoute: typeof HelpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/documents': {
+      id: '/documents'
+      path: '/documents'
+      fullPath: '/documents'
+      preLoaderRoute: typeof DocumentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/conversations': {
+      id: '/conversations'
+      path: '/conversations'
+      fullPath: '/conversations'
+      preLoaderRoute: typeof ConversationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compliance': {
+      id: '/compliance'
+      path: '/compliance'
+      fullPath: '/compliance'
+      preLoaderRoute: typeof ComplianceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compare': {
+      id: '/compare'
+      path: '/compare'
+      fullPath: '/compare'
+      preLoaderRoute: typeof CompareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/agents': {
+      id: '/agents'
+      path: '/agents'
+      fullPath: '/agents'
+      preLoaderRoute: typeof AgentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,21 +409,145 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/libraries/guided': {
+      id: '/libraries/guided'
+      path: '/guided'
+      fullPath: '/libraries/guided'
+      preLoaderRoute: typeof LibrariesGuidedRouteImport
+      parentRoute: typeof LibrariesRoute
+    }
+    '/libraries/ai': {
+      id: '/libraries/ai'
+      path: '/ai'
+      fullPath: '/libraries/ai'
+      preLoaderRoute: typeof LibrariesAiRouteImport
+      parentRoute: typeof LibrariesRoute
+    }
+    '/conversations/$id': {
+      id: '/conversations/$id'
+      path: '/$id'
+      fullPath: '/conversations/$id'
+      preLoaderRoute: typeof ConversationsIdRouteImport
+      parentRoute: typeof ConversationsRoute
+    }
+    '/compare/$bidSetId': {
+      id: '/compare/$bidSetId'
+      path: '/$bidSetId'
+      fullPath: '/compare/$bidSetId'
+      preLoaderRoute: typeof CompareBidSetIdRouteImport
+      parentRoute: typeof CompareRoute
+    }
+    '/agents/new': {
+      id: '/agents/new'
+      path: '/new'
+      fullPath: '/agents/new'
+      preLoaderRoute: typeof AgentsNewRouteImport
+      parentRoute: typeof AgentsRoute
+    }
+    '/agents/$agentId': {
+      id: '/agents/$agentId'
+      path: '/$agentId'
+      fullPath: '/agents/$agentId'
+      preLoaderRoute: typeof AgentsAgentIdRouteImport
+      parentRoute: typeof AgentsRoute
+    }
+    '/documents/folders/$folderId': {
+      id: '/documents/folders/$folderId'
+      path: '/folders/$folderId'
+      fullPath: '/documents/folders/$folderId'
+      preLoaderRoute: typeof DocumentsFoldersFolderIdRouteImport
+      parentRoute: typeof DocumentsRoute
+    }
+    '/documents/files/$fileId': {
+      id: '/documents/files/$fileId'
+      path: '/files/$fileId'
+      fullPath: '/documents/files/$fileId'
+      preLoaderRoute: typeof DocumentsFilesFileIdRouteImport
+      parentRoute: typeof DocumentsRoute
+    }
   }
 }
 
+interface AgentsRouteChildren {
+  AgentsAgentIdRoute: typeof AgentsAgentIdRoute
+  AgentsNewRoute: typeof AgentsNewRoute
+}
+
+const AgentsRouteChildren: AgentsRouteChildren = {
+  AgentsAgentIdRoute: AgentsAgentIdRoute,
+  AgentsNewRoute: AgentsNewRoute,
+}
+
+const AgentsRouteWithChildren =
+  AgentsRoute._addFileChildren(AgentsRouteChildren)
+
+interface CompareRouteChildren {
+  CompareBidSetIdRoute: typeof CompareBidSetIdRoute
+}
+
+const CompareRouteChildren: CompareRouteChildren = {
+  CompareBidSetIdRoute: CompareBidSetIdRoute,
+}
+
+const CompareRouteWithChildren =
+  CompareRoute._addFileChildren(CompareRouteChildren)
+
+interface ConversationsRouteChildren {
+  ConversationsIdRoute: typeof ConversationsIdRoute
+}
+
+const ConversationsRouteChildren: ConversationsRouteChildren = {
+  ConversationsIdRoute: ConversationsIdRoute,
+}
+
+const ConversationsRouteWithChildren = ConversationsRoute._addFileChildren(
+  ConversationsRouteChildren,
+)
+
+interface DocumentsRouteChildren {
+  DocumentsFilesFileIdRoute: typeof DocumentsFilesFileIdRoute
+  DocumentsFoldersFolderIdRoute: typeof DocumentsFoldersFolderIdRoute
+}
+
+const DocumentsRouteChildren: DocumentsRouteChildren = {
+  DocumentsFilesFileIdRoute: DocumentsFilesFileIdRoute,
+  DocumentsFoldersFolderIdRoute: DocumentsFoldersFolderIdRoute,
+}
+
+const DocumentsRouteWithChildren = DocumentsRoute._addFileChildren(
+  DocumentsRouteChildren,
+)
+
+interface LibrariesRouteChildren {
+  LibrariesAiRoute: typeof LibrariesAiRoute
+  LibrariesGuidedRoute: typeof LibrariesGuidedRoute
+}
+
+const LibrariesRouteChildren: LibrariesRouteChildren = {
+  LibrariesAiRoute: LibrariesAiRoute,
+  LibrariesGuidedRoute: LibrariesGuidedRoute,
+}
+
+const LibrariesRouteWithChildren = LibrariesRoute._addFileChildren(
+  LibrariesRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AgentsRoute: AgentsRouteWithChildren,
+  CompareRoute: CompareRouteWithChildren,
+  ComplianceRoute: ComplianceRoute,
+  ConversationsRoute: ConversationsRouteWithChildren,
+  DocumentsRoute: DocumentsRouteWithChildren,
+  HelpRoute: HelpRoute,
+  HomeRoute: HomeRoute,
+  LibrariesRoute: LibrariesRouteWithChildren,
+  LoginRoute: LoginRoute,
+  NotificationsRoute: NotificationsRoute,
+  SettingsRoute: SettingsRoute,
+  TeamsRoute: TeamsRoute,
+  WritingRoute: WritingRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}
