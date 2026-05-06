@@ -58,7 +58,7 @@ export function Sidebar() {
       <div className="px-3 flex-1 overflow-y-auto">
         <Section label="APPLICATION" items={application} path={path} />
         <div className="my-3 border-t border-border" />
-        <Section label="OFFER" items={offer} path={path} />
+        <Section label="OFFRE" items={offer} path={path} />
       </div>
 
       {user && (
