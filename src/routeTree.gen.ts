@@ -13,7 +13,6 @@ import { Route as WritingRouteImport } from './routes/writing'
 import { Route as TeamsRouteImport } from './routes/teams'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as NotificationsRouteImport } from './routes/notifications'
-import { Route as LoginRouteImport } from './routes/login'
 import { Route as LibrariesRouteImport } from './routes/libraries'
 import { Route as HomeRouteImport } from './routes/home'
 import { Route as HelpRouteImport } from './routes/help'
@@ -50,11 +49,6 @@ const SettingsRoute = SettingsRouteImport.update({
 const NotificationsRoute = NotificationsRouteImport.update({
   id: '/notifications',
   path: '/notifications',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LoginRoute = LoginRouteImport.update({
-  id: '/login',
-  path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LibrariesRoute = LibrariesRouteImport.update({
@@ -154,7 +148,6 @@ export interface FileRoutesByFullPath {
   '/help': typeof HelpRoute
   '/home': typeof HomeRoute
   '/libraries': typeof LibrariesRouteWithChildren
-  '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
   '/settings': typeof SettingsRoute
   '/teams': typeof TeamsRoute
@@ -178,7 +171,6 @@ export interface FileRoutesByTo {
   '/help': typeof HelpRoute
   '/home': typeof HomeRoute
   '/libraries': typeof LibrariesRouteWithChildren
-  '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
   '/settings': typeof SettingsRoute
   '/teams': typeof TeamsRoute
@@ -203,7 +195,6 @@ export interface FileRoutesById {
   '/help': typeof HelpRoute
   '/home': typeof HomeRoute
   '/libraries': typeof LibrariesRouteWithChildren
-  '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
   '/settings': typeof SettingsRoute
   '/teams': typeof TeamsRoute
@@ -229,7 +220,6 @@ export interface FileRouteTypes {
     | '/help'
     | '/home'
     | '/libraries'
-    | '/login'
     | '/notifications'
     | '/settings'
     | '/teams'
@@ -253,7 +243,6 @@ export interface FileRouteTypes {
     | '/help'
     | '/home'
     | '/libraries'
-    | '/login'
     | '/notifications'
     | '/settings'
     | '/teams'
@@ -277,7 +266,6 @@ export interface FileRouteTypes {
     | '/help'
     | '/home'
     | '/libraries'
-    | '/login'
     | '/notifications'
     | '/settings'
     | '/teams'
@@ -302,7 +290,6 @@ export interface RootRouteChildren {
   HelpRoute: typeof HelpRoute
   HomeRoute: typeof HomeRoute
   LibrariesRoute: typeof LibrariesRouteWithChildren
-  LoginRoute: typeof LoginRoute
   NotificationsRoute: typeof NotificationsRoute
   SettingsRoute: typeof SettingsRoute
   TeamsRoute: typeof TeamsRoute
@@ -337,13 +324,6 @@ declare module '@tanstack/react-router' {
       path: '/notifications'
       fullPath: '/notifications'
       preLoaderRoute: typeof NotificationsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/login': {
-      id: '/login'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/libraries': {
@@ -542,7 +522,6 @@ const rootRouteChildren: RootRouteChildren = {
   HelpRoute: HelpRoute,
   HomeRoute: HomeRoute,
   LibrariesRoute: LibrariesRouteWithChildren,
-  LoginRoute: LoginRoute,
   NotificationsRoute: NotificationsRoute,
   SettingsRoute: SettingsRoute,
   TeamsRoute: TeamsRoute,
@@ -551,3 +530,12 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}
