@@ -22,6 +22,8 @@ import { Route as ComplianceRouteImport } from './routes/compliance'
 import { Route as CompareRouteImport } from './routes/compare'
 import { Route as AgentsRouteImport } from './routes/agents'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as OfferFeaturesRouteImport } from './routes/offer.features'
+import { Route as OfferArchitectureRouteImport } from './routes/offer.architecture'
 import { Route as LibrariesGuidedRouteImport } from './routes/libraries.guided'
 import { Route as LibrariesAiRouteImport } from './routes/libraries.ai'
 import { Route as ConversationsIdRouteImport } from './routes/conversations.$id'
@@ -96,6 +98,16 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OfferFeaturesRoute = OfferFeaturesRouteImport.update({
+  id: '/offer/features',
+  path: '/offer/features',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OfferArchitectureRoute = OfferArchitectureRouteImport.update({
+  id: '/offer/architecture',
+  path: '/offer/architecture',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LibrariesGuidedRoute = LibrariesGuidedRouteImport.update({
   id: '/guided',
   path: '/guided',
@@ -158,6 +170,8 @@ export interface FileRoutesByFullPath {
   '/conversations/$id': typeof ConversationsIdRoute
   '/libraries/ai': typeof LibrariesAiRoute
   '/libraries/guided': typeof LibrariesGuidedRoute
+  '/offer/architecture': typeof OfferArchitectureRoute
+  '/offer/features': typeof OfferFeaturesRoute
   '/documents/files/$fileId': typeof DocumentsFilesFileIdRoute
   '/documents/folders/$folderId': typeof DocumentsFoldersFolderIdRoute
 }
@@ -181,6 +195,8 @@ export interface FileRoutesByTo {
   '/conversations/$id': typeof ConversationsIdRoute
   '/libraries/ai': typeof LibrariesAiRoute
   '/libraries/guided': typeof LibrariesGuidedRoute
+  '/offer/architecture': typeof OfferArchitectureRoute
+  '/offer/features': typeof OfferFeaturesRoute
   '/documents/files/$fileId': typeof DocumentsFilesFileIdRoute
   '/documents/folders/$folderId': typeof DocumentsFoldersFolderIdRoute
 }
@@ -205,6 +221,8 @@ export interface FileRoutesById {
   '/conversations/$id': typeof ConversationsIdRoute
   '/libraries/ai': typeof LibrariesAiRoute
   '/libraries/guided': typeof LibrariesGuidedRoute
+  '/offer/architecture': typeof OfferArchitectureRoute
+  '/offer/features': typeof OfferFeaturesRoute
   '/documents/files/$fileId': typeof DocumentsFilesFileIdRoute
   '/documents/folders/$folderId': typeof DocumentsFoldersFolderIdRoute
 }
@@ -230,6 +248,8 @@ export interface FileRouteTypes {
     | '/conversations/$id'
     | '/libraries/ai'
     | '/libraries/guided'
+    | '/offer/architecture'
+    | '/offer/features'
     | '/documents/files/$fileId'
     | '/documents/folders/$folderId'
   fileRoutesByTo: FileRoutesByTo
@@ -253,6 +273,8 @@ export interface FileRouteTypes {
     | '/conversations/$id'
     | '/libraries/ai'
     | '/libraries/guided'
+    | '/offer/architecture'
+    | '/offer/features'
     | '/documents/files/$fileId'
     | '/documents/folders/$folderId'
   id:
@@ -276,6 +298,8 @@ export interface FileRouteTypes {
     | '/conversations/$id'
     | '/libraries/ai'
     | '/libraries/guided'
+    | '/offer/architecture'
+    | '/offer/features'
     | '/documents/files/$fileId'
     | '/documents/folders/$folderId'
   fileRoutesById: FileRoutesById
@@ -294,6 +318,8 @@ export interface RootRouteChildren {
   SettingsRoute: typeof SettingsRoute
   TeamsRoute: typeof TeamsRoute
   WritingRoute: typeof WritingRoute
+  OfferArchitectureRoute: typeof OfferArchitectureRoute
+  OfferFeaturesRoute: typeof OfferFeaturesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -387,6 +413,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/offer/features': {
+      id: '/offer/features'
+      path: '/offer/features'
+      fullPath: '/offer/features'
+      preLoaderRoute: typeof OfferFeaturesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/offer/architecture': {
+      id: '/offer/architecture'
+      path: '/offer/architecture'
+      fullPath: '/offer/architecture'
+      preLoaderRoute: typeof OfferArchitectureRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/libraries/guided': {
@@ -526,16 +566,9 @@ const rootRouteChildren: RootRouteChildren = {
   SettingsRoute: SettingsRoute,
   TeamsRoute: TeamsRoute,
   WritingRoute: WritingRoute,
+  OfferArchitectureRoute: OfferArchitectureRoute,
+  OfferFeaturesRoute: OfferFeaturesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}
