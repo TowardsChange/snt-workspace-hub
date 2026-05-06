@@ -13,7 +13,7 @@ export function SourcePickerModal({ onClose }: { onClose: () => void }) {
     <div className="absolute left-0 right-0 mt-2 bg-[var(--soft)] border border-[var(--accent)]/30 rounded-2xl shadow-xl z-30 p-5">
       <div className="flex items-start justify-between gap-4 mb-4">
         <p className="text-sm text-muted-foreground">
-          Sélectionnez les documents, ou les dossiers, à analyser par SNT.
+          Sélectionnez les documents, ou les dossiers, à analyser par SpieB.ai.
         </p>
         <button onClick={onClose} className="p-1 rounded hover:bg-white/60"><X className="size-4" /></button>
       </div>

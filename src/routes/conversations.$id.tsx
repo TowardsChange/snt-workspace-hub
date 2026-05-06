@@ -4,7 +4,7 @@ import { mockMessages, mockDocuments, type Citation } from "@/mocks/data";
 import { ChatComposer } from "@/components/ChatComposer";
 import { PdfViewer } from "@/components/PdfViewer";
 import { Copy, X } from "lucide-react";
-import { SntLogo } from "@/components/SntLogo";
+import { SpiebLogo } from "@/components/SpiebLogo";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/conversations/$id")({
@@ -45,12 +45,12 @@ function ConversationPage() {
           {userMsg && (
             <div className="flex justify-end items-start gap-3">
               <div className="max-w-[70%] bg-[var(--soft)] border border-border rounded-2xl px-4 py-3 text-sm">{userMsg.content}</div>
-              <div className="size-8 rounded-full bg-[var(--accent-soft)] text-[var(--accent)] flex items-center justify-center text-xs font-semibold">Sar</div>
+              <div className="size-8 rounded-full bg-[var(--accent-soft)] text-[var(--accent)] flex items-center justify-center text-xs font-semibold">PB</div>
             </div>
           )}
           {assistant && (
             <div>
-              <div className="flex items-center gap-2 mb-2"><SntLogo size={18} /></div>
+              <div className="flex items-center gap-2 mb-2"><SpiebLogo size={18} /></div>
               <div
                 className="prose prose-sm max-w-none text-sm leading-relaxed"
                 dangerouslySetInnerHTML={{ __html: streamed.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>") }}

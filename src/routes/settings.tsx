@@ -17,8 +17,8 @@ function SettingsPage() {
       </div>
       {tab === "profil" && (
         <div className="bg-[var(--surface)] border border-border rounded-xl p-6 space-y-4 max-w-xl">
-          <Field label="Nom"><input className="w-full px-3 py-2 rounded-md border border-border bg-background text-sm" defaultValue="Sarah Doucet" /></Field>
-          <Field label="Email"><input className="w-full px-3 py-2 rounded-md border border-border bg-background text-sm" defaultValue="sarah.doucet@spiebatignolles.com" /></Field>
+          <Field label="Nom"><input className="w-full px-3 py-2 rounded-md border border-border bg-background text-sm" defaultValue="Pascal Bigard" /></Field>
+          <Field label="Email"><input className="w-full px-3 py-2 rounded-md border border-border bg-background text-sm" defaultValue="pascal.bigard@spiebatignolles.fr" /></Field>
         </div>
       )}
       {tab === "securite" && (

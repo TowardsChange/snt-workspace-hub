@@ -2,98 +2,63 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import {
   Bell,
   Search,
-  LayoutGrid,
-  Target,
-  Bot,
   Folder,
+  LayoutGrid,
   AlignLeft,
   ClipboardList,
   PenTool,
+  Bot,
   Users,
-  BookOpen,
-  HelpCircle,
   Settings,
-  Globe,
-  ChevronDown,
-  ChevronRight,
+  HelpCircle,
+  MessageSquare,
+  Layers,
+  Network,
   LogOut,
 } from "lucide-react";
-import { SntLogo } from "./SntLogo";
+import { SpiebLogo } from "./SpiebLogo";
 import { useApp } from "@/store/app";
-import { useState } from "react";
 
-type Item = { to?: string; icon: React.ComponentType<{ className?: string; strokeWidth?: number }>; label: string; badge?: string | number; muted?: boolean; indent?: boolean };
+type Item = {
+  to: string;
+  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
+  label: string;
+  badge?: string | number;
+};
 
 export function Sidebar() {
   const { user } = useApp();
-  const [libsOpen, setLibsOpen] = useState(true);
   const path = useRouterState({ select: (r) => r.location.pathname });
 
-  const top: Item[] = [
-    { to: "/notifications", icon: Bell, label: "Notifications", badge: 0 },
+  const application: Item[] = [
     { to: "/home", icon: Search, label: "Spie Batignolles IA" },
-  ];
-
-  const libsChildren: Item[] = [
-    { to: "/libraries/guided", icon: Target, label: "Recherche guidée", indent: true },
-    { to: "/libraries/ai", icon: Bot, label: "Recherche IA", indent: true },
-  ];
-
-  const middle: Item[] = [
+    { to: "/conversations", icon: MessageSquare, label: "Conversations" },
     { to: "/documents", icon: Folder, label: "Base documentaire" },
+    { to: "/libraries", icon: LayoutGrid, label: "Bibliothèques de prix" },
     { to: "/compare", icon: AlignLeft, label: "Comparer des devis" },
     { to: "/compliance", icon: ClipboardList, label: "Conformité" },
     { to: "/writing", icon: PenTool, label: "Rédaction assistée" },
+    { to: "/agents", icon: Bot, label: "Mes agents" },
+    { to: "/teams", icon: Users, label: "Equipes" },
+    { to: "/settings", icon: Settings, label: "Paramètres" },
+    { to: "/help", icon: HelpCircle, label: "Assistance" },
+    { to: "/notifications", icon: Bell, label: "Notifications", badge: 0 },
   ];
 
-  const bottom: Item[] = [
-    { to: "/teams", icon: Users, label: "Equipes" },
-    { icon: BookOpen, label: "Guides", muted: true },
-    { to: "/help", icon: HelpCircle, label: "Assistance" },
-    { to: "/settings", icon: Settings, label: "Paramètres" },
+  const offer: Item[] = [
+    { to: "/offer/features", icon: Layers, label: "Features & pricing" },
+    { to: "/offer/architecture", icon: Network, label: "Architecture" },
   ];
 
   return (
     <aside className="w-[260px] shrink-0 h-screen sticky top-0 bg-[var(--surface)] border-r border-border flex flex-col">
       <div className="px-5 py-5">
-        <SntLogo />
+        <SpiebLogo />
       </div>
       <div className="px-3 flex-1 overflow-y-auto">
-        <nav className="flex flex-col gap-0.5">
-          {top.map((it) => (
-            <Row key={it.label} item={it} active={path === it.to} />
-          ))}
-
-          <button
-            onClick={() => setLibsOpen((o) => !o)}
-            className="mt-2 flex items-center justify-between px-3 py-2 rounded-md text-sm hover:bg-slate-50 text-foreground"
-          >
-            <span className="flex items-center gap-3">
-              <LayoutGrid className="size-[18px] text-foreground/80" strokeWidth={1.5} />
-              Bibliothèques de prix
-            </span>
-            {libsOpen ? <ChevronDown className="size-4" /> : <ChevronRight className="size-4" />}
-          </button>
-          {libsOpen && libsChildren.map((it) => <Row key={it.label} item={it} active={path === it.to} />)}
-
-          <div className="mt-1">
-            {middle.map((it) => (
-              <Row key={it.label} item={it} active={path === it.to} />
-            ))}
-          </div>
-
-          <div className="mt-6">
-            {bottom.map((it) => (
-              <Row key={it.label} item={it} active={path === it.to} />
-            ))}
-          </div>
-
-          <button className="mt-3 flex items-center gap-3 px-3 py-2 rounded-md text-sm hover:bg-slate-50 text-foreground">
-            <Globe className="size-[18px]" strokeWidth={1.5} />
-            FR
-            <ChevronDown className="size-4 ml-1" />
-          </button>
-        </nav>
+        <Section label="APPLICATION" items={application} path={path} />
+        <div className="my-3 border-t border-border" />
+        <Section label="OFFER" items={offer} path={path} />
       </div>
 
       {user && (
@@ -105,7 +70,7 @@ export function Sidebar() {
             <div className="text-sm font-medium truncate">{user.name}</div>
             <div className="text-xs text-muted-foreground truncate">{user.email}</div>
           </div>
-          <Link to="/login" aria-label="logout" className="text-muted-foreground hover:text-foreground">
+          <Link to="/" aria-label="logout" className="text-muted-foreground hover:text-foreground">
             <LogOut className="size-4" strokeWidth={1.5} />
           </Link>
         </div>
@@ -114,28 +79,30 @@ export function Sidebar() {
   );
 }
 
-function Row({ item, active }: { item: Item; active?: boolean }) {
-  const Icon = item.icon;
-  const cls = `group flex items-center justify-between px-3 py-2 rounded-md text-sm ${
-    item.muted
-      ? "text-muted-foreground cursor-default"
-      : active
-      ? "bg-[var(--accent-soft)] text-[var(--accent)] font-medium"
-      : "text-foreground hover:bg-slate-50"
-  } ${item.indent ? "ml-6" : ""}`;
-  const inner = (
-    <>
-      <span className="flex items-center gap-3">
-        <Icon className="size-[18px]" strokeWidth={1.5} />
-        {item.label}
-      </span>
-      {item.badge !== undefined && <span className="text-xs text-muted-foreground">{item.badge}</span>}
-    </>
-  );
-  if (!item.to || item.muted) return <div className={cls}>{inner}</div>;
+function Section({ label, items, path }: { label: string; items: Item[]; path: string }) {
   return (
-    <Link to={item.to} className={cls}>
-      {inner}
-    </Link>
+    <nav className="flex flex-col gap-0.5">
+      <div className="px-3 pt-2 pb-1 text-[11px] font-semibold tracking-[0.06em] text-muted-foreground">
+        {label}
+      </div>
+      {items.map((it) => {
+        const Icon = it.icon;
+        const active = path === it.to;
+        const cls = `group flex items-center justify-between px-3 py-2 rounded-md text-sm ${
+          active
+            ? "bg-[var(--accent-soft)] text-[var(--accent)] font-medium"
+            : "text-foreground hover:bg-slate-50"
+        }`;
+        return (
+          <Link key={it.label} to={it.to} className={cls}>
+            <span className="flex items-center gap-3">
+              <Icon className="size-[18px]" strokeWidth={1.5} />
+              {it.label}
+            </span>
+            {it.badge !== undefined && <span className="text-xs text-muted-foreground">{it.badge}</span>}
+          </Link>
+        );
+      })}
+    </nav>
   );
 }

@@ -13,7 +13,6 @@ import { Route as WritingRouteImport } from './routes/writing'
 import { Route as TeamsRouteImport } from './routes/teams'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as NotificationsRouteImport } from './routes/notifications'
-import { Route as LoginRouteImport } from './routes/login'
 import { Route as LibrariesRouteImport } from './routes/libraries'
 import { Route as HomeRouteImport } from './routes/home'
 import { Route as HelpRouteImport } from './routes/help'
@@ -23,6 +22,8 @@ import { Route as ComplianceRouteImport } from './routes/compliance'
 import { Route as CompareRouteImport } from './routes/compare'
 import { Route as AgentsRouteImport } from './routes/agents'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as OfferFeaturesRouteImport } from './routes/offer.features'
+import { Route as OfferArchitectureRouteImport } from './routes/offer.architecture'
 import { Route as LibrariesGuidedRouteImport } from './routes/libraries.guided'
 import { Route as LibrariesAiRouteImport } from './routes/libraries.ai'
 import { Route as ConversationsIdRouteImport } from './routes/conversations.$id'
@@ -50,11 +51,6 @@ const SettingsRoute = SettingsRouteImport.update({
 const NotificationsRoute = NotificationsRouteImport.update({
   id: '/notifications',
   path: '/notifications',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LoginRoute = LoginRouteImport.update({
-  id: '/login',
-  path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LibrariesRoute = LibrariesRouteImport.update({
@@ -100,6 +96,16 @@ const AgentsRoute = AgentsRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OfferFeaturesRoute = OfferFeaturesRouteImport.update({
+  id: '/offer/features',
+  path: '/offer/features',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OfferArchitectureRoute = OfferArchitectureRouteImport.update({
+  id: '/offer/architecture',
+  path: '/offer/architecture',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LibrariesGuidedRoute = LibrariesGuidedRouteImport.update({
@@ -154,7 +160,6 @@ export interface FileRoutesByFullPath {
   '/help': typeof HelpRoute
   '/home': typeof HomeRoute
   '/libraries': typeof LibrariesRouteWithChildren
-  '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
   '/settings': typeof SettingsRoute
   '/teams': typeof TeamsRoute
@@ -165,6 +170,8 @@ export interface FileRoutesByFullPath {
   '/conversations/$id': typeof ConversationsIdRoute
   '/libraries/ai': typeof LibrariesAiRoute
   '/libraries/guided': typeof LibrariesGuidedRoute
+  '/offer/architecture': typeof OfferArchitectureRoute
+  '/offer/features': typeof OfferFeaturesRoute
   '/documents/files/$fileId': typeof DocumentsFilesFileIdRoute
   '/documents/folders/$folderId': typeof DocumentsFoldersFolderIdRoute
 }
@@ -178,7 +185,6 @@ export interface FileRoutesByTo {
   '/help': typeof HelpRoute
   '/home': typeof HomeRoute
   '/libraries': typeof LibrariesRouteWithChildren
-  '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
   '/settings': typeof SettingsRoute
   '/teams': typeof TeamsRoute
@@ -189,6 +195,8 @@ export interface FileRoutesByTo {
   '/conversations/$id': typeof ConversationsIdRoute
   '/libraries/ai': typeof LibrariesAiRoute
   '/libraries/guided': typeof LibrariesGuidedRoute
+  '/offer/architecture': typeof OfferArchitectureRoute
+  '/offer/features': typeof OfferFeaturesRoute
   '/documents/files/$fileId': typeof DocumentsFilesFileIdRoute
   '/documents/folders/$folderId': typeof DocumentsFoldersFolderIdRoute
 }
@@ -203,7 +211,6 @@ export interface FileRoutesById {
   '/help': typeof HelpRoute
   '/home': typeof HomeRoute
   '/libraries': typeof LibrariesRouteWithChildren
-  '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
   '/settings': typeof SettingsRoute
   '/teams': typeof TeamsRoute
@@ -214,6 +221,8 @@ export interface FileRoutesById {
   '/conversations/$id': typeof ConversationsIdRoute
   '/libraries/ai': typeof LibrariesAiRoute
   '/libraries/guided': typeof LibrariesGuidedRoute
+  '/offer/architecture': typeof OfferArchitectureRoute
+  '/offer/features': typeof OfferFeaturesRoute
   '/documents/files/$fileId': typeof DocumentsFilesFileIdRoute
   '/documents/folders/$folderId': typeof DocumentsFoldersFolderIdRoute
 }
@@ -229,7 +238,6 @@ export interface FileRouteTypes {
     | '/help'
     | '/home'
     | '/libraries'
-    | '/login'
     | '/notifications'
     | '/settings'
     | '/teams'
@@ -240,6 +248,8 @@ export interface FileRouteTypes {
     | '/conversations/$id'
     | '/libraries/ai'
     | '/libraries/guided'
+    | '/offer/architecture'
+    | '/offer/features'
     | '/documents/files/$fileId'
     | '/documents/folders/$folderId'
   fileRoutesByTo: FileRoutesByTo
@@ -253,7 +263,6 @@ export interface FileRouteTypes {
     | '/help'
     | '/home'
     | '/libraries'
-    | '/login'
     | '/notifications'
     | '/settings'
     | '/teams'
@@ -264,6 +273,8 @@ export interface FileRouteTypes {
     | '/conversations/$id'
     | '/libraries/ai'
     | '/libraries/guided'
+    | '/offer/architecture'
+    | '/offer/features'
     | '/documents/files/$fileId'
     | '/documents/folders/$folderId'
   id:
@@ -277,7 +288,6 @@ export interface FileRouteTypes {
     | '/help'
     | '/home'
     | '/libraries'
-    | '/login'
     | '/notifications'
     | '/settings'
     | '/teams'
@@ -288,6 +298,8 @@ export interface FileRouteTypes {
     | '/conversations/$id'
     | '/libraries/ai'
     | '/libraries/guided'
+    | '/offer/architecture'
+    | '/offer/features'
     | '/documents/files/$fileId'
     | '/documents/folders/$folderId'
   fileRoutesById: FileRoutesById
@@ -302,11 +314,12 @@ export interface RootRouteChildren {
   HelpRoute: typeof HelpRoute
   HomeRoute: typeof HomeRoute
   LibrariesRoute: typeof LibrariesRouteWithChildren
-  LoginRoute: typeof LoginRoute
   NotificationsRoute: typeof NotificationsRoute
   SettingsRoute: typeof SettingsRoute
   TeamsRoute: typeof TeamsRoute
   WritingRoute: typeof WritingRoute
+  OfferArchitectureRoute: typeof OfferArchitectureRoute
+  OfferFeaturesRoute: typeof OfferFeaturesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -337,13 +350,6 @@ declare module '@tanstack/react-router' {
       path: '/notifications'
       fullPath: '/notifications'
       preLoaderRoute: typeof NotificationsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/login': {
-      id: '/login'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/libraries': {
@@ -407,6 +413,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/offer/features': {
+      id: '/offer/features'
+      path: '/offer/features'
+      fullPath: '/offer/features'
+      preLoaderRoute: typeof OfferFeaturesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/offer/architecture': {
+      id: '/offer/architecture'
+      path: '/offer/architecture'
+      fullPath: '/offer/architecture'
+      preLoaderRoute: typeof OfferArchitectureRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/libraries/guided': {
@@ -542,11 +562,12 @@ const rootRouteChildren: RootRouteChildren = {
   HelpRoute: HelpRoute,
   HomeRoute: HomeRoute,
   LibrariesRoute: LibrariesRouteWithChildren,
-  LoginRoute: LoginRoute,
   NotificationsRoute: NotificationsRoute,
   SettingsRoute: SettingsRoute,
   TeamsRoute: TeamsRoute,
   WritingRoute: WritingRoute,
+  OfferArchitectureRoute: OfferArchitectureRoute,
+  OfferFeaturesRoute: OfferFeaturesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
