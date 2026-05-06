@@ -46,7 +46,7 @@ export function Sidebar() {
   ];
 
   const offer: Item[] = [
-    { to: "/offer/features", icon: Layers, label: "Features & pricing" },
+    { to: "/offer/features", icon: Layers, label: "Fonctionnalités & tarifs" },
     { to: "/offer/architecture", icon: Network, label: "Architecture" },
   ];
 
@@ -58,7 +58,7 @@ export function Sidebar() {
       <div className="px-3 flex-1 overflow-y-auto">
         <Section label="APPLICATION" items={application} path={path} />
         <div className="my-3 border-t border-border" />
-        <Section label="OFFER" items={offer} path={path} />
+        <Section label="OFFRE" items={offer} path={path} />
       </div>
 
       {user && (
