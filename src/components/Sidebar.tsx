@@ -46,7 +46,7 @@ export function Sidebar() {
   ];
 
   const offer: Item[] = [
-    { to: "/offer/features", icon: Layers, label: "Features & pricing" },
+    { to: "/offer/features", icon: Layers, label: "Fonctionnalités & tarifs" },
     { to: "/offer/architecture", icon: Network, label: "Architecture" },
   ];
 
