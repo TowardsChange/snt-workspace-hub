@@ -24,22 +24,6 @@ function ArchitecturePage() {
   return (
     <div className="min-h-[calc(100vh-4rem)] w-full" style={{ background: "var(--soft)" }}>
       <div className="mx-auto max-w-[1100px] px-6 py-10 space-y-8">
-        {/* Diagram image */}
-        <div
-          className="rounded-2xl overflow-hidden border"
-          style={{
-            background: "var(--surface)",
-            borderColor: "var(--border)",
-            boxShadow: "0 1px 2px rgba(16,24,40,0.04), 0 8px 24px rgba(16,24,40,0.04)",
-          }}
-        >
-          <img
-            src={architectureDiagram}
-            alt="Architecture SpieB.ai sur Azure France Central"
-            className="w-full h-auto block"
-          />
-        </div>
-
         {/* Hero */}
         <div className="space-y-4">
           <div
@@ -60,6 +44,22 @@ function ArchitecturePage() {
             Entra ID, fichiers dans SharePoint, conversations dans PostgreSQL, IA via
             Azure OpenAI.
           </p>
+        </div>
+
+        {/* Diagram image */}
+        <div
+          className="rounded-2xl overflow-hidden border"
+          style={{
+            background: "var(--surface)",
+            borderColor: "var(--border)",
+            boxShadow: "0 1px 2px rgba(16,24,40,0.04), 0 8px 24px rgba(16,24,40,0.04)",
+          }}
+        >
+          <img
+            src={architectureDiagram}
+            alt="Architecture SpieB.ai sur Azure France Central"
+            className="w-full h-auto block"
+          />
         </div>
 
         {/* Summary card */}
