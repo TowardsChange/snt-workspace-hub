@@ -64,7 +64,7 @@ function ArchitecturePage() {
         {/* Summary card */}
         <div
           className="rounded-2xl border grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y md:divide-y-0 md:divide-x"
-          style={{ background: "var(--surface)", borderColor: "var(--border)", borderColor: "var(--border)" }}
+          style={{ background: "var(--surface)", borderColor: "var(--border)" }}
         >
           {summary.map((s) => (
             <div key={s.label} className="p-6 space-y-2">
