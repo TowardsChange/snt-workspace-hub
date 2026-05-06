@@ -5,7 +5,7 @@ import { HistoriqueDrawer } from "./HistoriqueDrawer";
 
 export function AppShell() {
   const path = useRouterState({ select: (r) => r.location.pathname });
-  if (path === "/login" || path === "/") return <Outlet />;
+  if (path === "/") return <Outlet />;
   return (
     <div className="flex min-h-screen w-full bg-background">
       <Sidebar />
