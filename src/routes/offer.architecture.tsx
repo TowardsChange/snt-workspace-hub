@@ -57,7 +57,7 @@ function ArchitecturePage() {
             Offre · Architecture
           </div>
           <h1 className="text-foreground font-bold tracking-tight" style={{ fontSize: 44, lineHeight: 1.1 }}>
-            Comment c'est construit, et où vit chaque chose.
+            État de l'art. Sous votre contrôle. Sans tiers IA.
           </h1>
           <p
             className="text-muted-foreground"
