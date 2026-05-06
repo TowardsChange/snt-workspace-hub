@@ -5,9 +5,9 @@ export const Route = createFileRoute("/")({
   component: SplitLogin,
 });
 
-const HEADLINE = "Bring AI to every pre-construction decision.";
+const HEADLINE = "L'IA au service de chaque décision en phase études.";
 const SUBTEXT =
-  "SpieB AI helps SPIE Batignolles teams query their document base, compare bids and run trusted agents — securely, in one place.";
+  "SpieB AI permet aux équipes de SPIE Batignolles d'interroger leur base documentaire, comparer les devis et exécuter des agents de confiance — en toute sécurité, au même endroit.";
 
 function useTypewriter(text: string, speed = 35, startDelay = 250) {
   const [out, setOut] = useState("");
@@ -145,7 +145,7 @@ function SplitLogin() {
 
         {/* Bottom: tag */}
         <div className="relative z-10 text-xs uppercase tracking-[0.18em] text-white/40">
-          Internal AI Workspace · Pre-construction
+          Espace IA interne · Phase études
         </div>
 
         <style>{`@keyframes spieb-caret { 0%,100% { opacity: 1 } 50% { opacity: 0 } }`}</style>
@@ -176,10 +176,10 @@ function SplitLogin() {
               letterSpacing: "-0.01em",
             }}
           >
-            Sign in
+            Se connecter
           </h2>
           <p style={{ fontSize: 15, color: "#5e5e5e", marginBottom: 32 }}>
-            Use your SPIE Batignolles work account to continue.
+            Utilisez votre compte professionnel SPIE Batignolles pour continuer.
           </p>
 
           <button
@@ -205,7 +205,7 @@ function SplitLogin() {
               <rect x="0" y="10" width="9" height="9" fill="#00A4EF" />
               <rect x="10" y="10" width="9" height="9" fill="#FFB900" />
             </svg>
-            Sign in with Microsoft
+            Se connecter avec Microsoft
           </button>
 
           <div
@@ -216,7 +216,7 @@ function SplitLogin() {
               textAlign: "center",
             }}
           >
-            Signed in as{" "}
+            Connecté en tant que{" "}
             <span style={{ color: "#1B1B1B", fontWeight: 500 }}>
               pascal.bigard@spiebatignolles.fr
             </span>
@@ -232,9 +232,9 @@ function SplitLogin() {
               color: "#9a9a9a",
             }}
           >
-            <a href="#" style={{ color: "#9a9a9a" }}>Privacy &amp; cookies</a>
-            <a href="#" style={{ color: "#9a9a9a" }}>Terms of use</a>
-            <a href="#" style={{ color: "#9a9a9a" }}>Help</a>
+            <a href="#" style={{ color: "#9a9a9a" }}>Confidentialité &amp; cookies</a>
+            <a href="#" style={{ color: "#9a9a9a" }}>Conditions d'utilisation</a>
+            <a href="#" style={{ color: "#9a9a9a" }}>Aide</a>
           </div>
         </div>
       </div>
