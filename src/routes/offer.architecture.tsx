@@ -34,7 +34,7 @@ function ArchitecturePage() {
           }}
         >
           <img
-            src="/architecture.png"
+            src={architectureDiagram}
             alt="Architecture SpieB.ai sur Azure France Central"
             className="w-full h-auto block"
           />
