@@ -8,7 +8,7 @@ import {
   Folder,
   AlignLeft,
   ClipboardList,
-  PenRuler,
+  PenTool,
   Users,
   BookOpen,
   HelpCircle,
@@ -22,7 +22,7 @@ import { SntLogo } from "./SntLogo";
 import { useApp } from "@/store/app";
 import { useState } from "react";
 
-type Item = { to?: string; icon: React.ComponentType<{ className?: string }>; label: string; badge?: string | number; muted?: boolean; indent?: boolean };
+type Item = { to?: string; icon: React.ComponentType<{ className?: string; strokeWidth?: number }>; label: string; badge?: string | number; muted?: boolean; indent?: boolean };
 
 export function Sidebar() {
   const { user } = useApp();
@@ -43,7 +43,7 @@ export function Sidebar() {
     { to: "/documents", icon: Folder, label: "Base documentaire" },
     { to: "/compare", icon: AlignLeft, label: "Comparer des devis" },
     { to: "/compliance", icon: ClipboardList, label: "Conformité" },
-    { to: "/writing", icon: PenRuler, label: "Rédaction assistée" },
+    { to: "/writing", icon: PenTool, label: "Rédaction assistée" },
   ];
 
   const bottom: Item[] = [
