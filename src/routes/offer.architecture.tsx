@@ -46,22 +46,6 @@ function ArchitecturePage() {
           </p>
         </div>
 
-        {/* Diagram image */}
-        <div
-          className="rounded-2xl overflow-hidden border"
-          style={{
-            background: "var(--surface)",
-            borderColor: "var(--border)",
-            boxShadow: "0 1px 2px rgba(16,24,40,0.04), 0 8px 24px rgba(16,24,40,0.04)",
-          }}
-        >
-          <img
-            src={architectureDiagram}
-            alt="Architecture SpieB.ai sur Azure France Central"
-            className="w-full h-auto block"
-          />
-        </div>
-
         {/* Summary card */}
         <div
           className="rounded-2xl border grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y md:divide-y-0 md:divide-x"
@@ -96,6 +80,22 @@ function ArchitecturePage() {
               <span className="text-sm text-foreground">{l.label}</span>
             </div>
           ))}
+        </div>
+
+        {/* Diagram image */}
+        <div
+          className="rounded-2xl overflow-hidden border"
+          style={{
+            background: "var(--surface)",
+            borderColor: "var(--border)",
+            boxShadow: "0 1px 2px rgba(16,24,40,0.04), 0 8px 24px rgba(16,24,40,0.04)",
+          }}
+        >
+          <img
+            src={architectureDiagram}
+            alt="Architecture SpieB.ai sur Azure France Central"
+            className="w-full h-auto block"
+          />
         </div>
 
         <div className="pt-4 text-xs text-muted-foreground">
