@@ -11,7 +11,7 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "SNT — Spie Batignolles IA" },
+      { title: "SpieB AI" },
       { name: "description", content: "Workspace IA interne SPIE Batignolles." },
     ],
     links: [

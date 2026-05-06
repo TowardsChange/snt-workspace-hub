@@ -1,15 +1,15 @@
-export const mockWorkspace = { id: "w1", name: "Spie Batignolles IA" };
+export const mockWorkspace = { id: "w1", name: "SpieB AI" };
 
 export const mockCurrentUser = {
   id: "u1",
-  name: "Sarah Doucet",
-  email: "sarah.doucet@spiebatignolles.com",
+  name: "Pascal Bigard",
+  email: "pascal.bigard@spiebatignolles.fr",
   role: "Team manager" as const,
-  initials: "Sar",
+  initials: "PB",
 };
 
 export const mockUsers = [
-  { id: "u1", name: "Sarah Doucet", email: "sarah.doucet@spiebatignolles.com", role: "Team manager", avatar: "Sar", lastActive: "Aujourd'hui" },
+  { id: "u1", name: "Pascal Bigard", email: "pascal.bigard@spiebatignolles.fr", role: "Team manager", avatar: "PB", lastActive: "Aujourd'hui" },
   { id: "u2", name: "Romaric Mathieu", email: "romaric.mathieu-ext@spiebatignolles.com", role: "User", avatar: "Rom", lastActive: "Hier" },
   { id: "u3", name: "Pascal Durand", email: "pascal.durand@spiebatignolles.com", role: "Admin", avatar: "Pas", lastActive: "Aujourd'hui" },
   { id: "u4", name: "Anne Lefèvre", email: "anne.lefevre@spiebatignolles.com", role: "Team manager", avatar: "Ann", lastActive: "Il y a 3 jours" },

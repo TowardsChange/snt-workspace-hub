@@ -22,7 +22,7 @@ export function Topbar() {
           <MessageSquarePlus className="size-4" strokeWidth={1.75} />
         </Link>
       </div>
-      <div className="text-base font-semibold tracking-tight">SNT</div>
+      <div className="text-base font-semibold tracking-tight">SpieB AI</div>
       <div className="flex items-center gap-2">
         <Link
           to="/agents"
