@@ -1,6 +1,6 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import spieBatignollesLogo from "@/assets/spie-batignolles-logo.png";
+import spiebAiLogo from "@/assets/spieb-ai-logo.png";
 
 export const Route = createFileRoute("/")({
   component: SplitLogin,
@@ -64,11 +64,40 @@ function SplitLogin() {
 
         {/* Top: SPIE Batignolles wordmark */}
         <div className="relative z-10">
-          <img
-            src={spieBatignollesLogo}
-            alt="SPIE Batignolles"
-            style={{ height: 56, width: "auto", display: "block" }}
-          />
+          <div
+            style={{
+              background: "transparent",
+              width: 200,
+              padding: "10px 0",
+              display: "flex",
+              flexDirection: "column",
+              gap: 6,
+            }}
+          >
+            <div
+              style={{
+                color: "white",
+                fontWeight: 700,
+                fontSize: 22,
+                letterSpacing: "0.06em",
+                lineHeight: 1,
+              }}
+            >
+              SPIE
+            </div>
+            <div style={{ height: 2, width: 56, background: "#F59A23" }} />
+            <div
+              style={{
+                color: "white",
+                fontWeight: 400,
+                fontSize: 14,
+                letterSpacing: "0.06em",
+                lineHeight: 1,
+              }}
+            >
+              Batignolles
+            </div>
+          </div>
         </div>
 
         {/* Middle: typewriter headline */}
@@ -126,16 +155,12 @@ function SplitLogin() {
       <div className="flex-1 flex items-center justify-center bg-white px-6 py-10">
         <div className="w-full max-w-[400px]">
           {/* SpieB.ai wordmark */}
-          <div className="flex items-center gap-2 mb-12">
-            <svg width={26} height={26} viewBox="0 0 24 24" aria-hidden>
-              <rect x="3" y="3" width="8" height="18" rx="1.5" fill="#F59A23" />
-              <rect x="3" y="14" width="18" height="7" rx="1.5" fill="#F59A23" />
-            </svg>
-            <span
-              style={{ fontSize: 22, fontWeight: 700, color: "#1B1B1B", letterSpacing: "-0.01em" }}
-            >
-              SpieB<span style={{ color: "#F59A23" }}>.ai</span>
-            </span>
+          <div className="flex items-center mb-12">
+            <img
+              src={spiebAiLogo}
+              alt="SpieB.ai"
+              style={{ height: 36, width: "auto", display: "block" }}
+            />
           </div>
 
           <h2
