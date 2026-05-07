@@ -1,5 +1,6 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import spieBatignollesLogo from "@/assets/spie-batignolles-logo.png";
 
 export const Route = createFileRoute("/")({
   component: SplitLogin,
