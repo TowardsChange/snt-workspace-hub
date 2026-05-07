@@ -57,7 +57,7 @@ function ArchitecturePage() {
             Offre · Architecture
           </div>
           <h1 className="text-foreground font-bold tracking-tight" style={{ fontSize: 44, lineHeight: 1.1 }}>
-            État de l'art. Sous votre contrôle. Sans tiers IA.
+            État de l'art. Sous votre contrôle.
           </h1>
           <p
             className="text-muted-foreground"
