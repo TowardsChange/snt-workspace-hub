@@ -39,7 +39,7 @@ function SplitLogin() {
     >
       {/* LEFT: dark panel with typewriter */}
       <div
-        className="relative hidden md:flex flex-col justify-between flex-1 px-16 py-14 overflow-hidden"
+        className="relative hidden md:flex flex-col justify-center flex-1 px-16 py-14 overflow-hidden"
         style={{ background: "#0B1220", color: "white" }}
       >
         {/* subtle grid + glow */}
