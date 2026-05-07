@@ -62,43 +62,7 @@ function SplitLogin() {
           <rect width="100%" height="100%" fill="url(#grid2)" />
         </svg>
 
-        {/* Top: SPIE Batignolles wordmark */}
-        <div className="relative z-10">
-          <div
-            style={{
-              background: "transparent",
-              width: 200,
-              padding: "10px 0",
-              display: "flex",
-              flexDirection: "column",
-              gap: 6,
-            }}
-          >
-            <div
-              style={{
-                color: "white",
-                fontWeight: 700,
-                fontSize: 22,
-                letterSpacing: "0.06em",
-                lineHeight: 1,
-              }}
-            >
-              SPIE
-            </div>
-            <div style={{ height: 2, width: 56, background: "#F59A23" }} />
-            <div
-              style={{
-                color: "white",
-                fontWeight: 400,
-                fontSize: 14,
-                letterSpacing: "0.06em",
-                lineHeight: 1,
-              }}
-            >
-              Batignolles
-            </div>
-          </div>
-        </div>
+        {/* Top: SPIE Batignolles wordmark removed */}
 
         {/* Middle: typewriter headline */}
         <div className="relative z-10 max-w-[640px]">
