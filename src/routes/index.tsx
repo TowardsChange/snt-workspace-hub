@@ -63,41 +63,11 @@ function SplitLogin() {
 
         {/* Top: SPIE Batignolles wordmark */}
         <div className="relative z-10">
-          {/* TODO: replace with real SPIE Batignolles logo */}
-          <div
-            style={{
-              background: "transparent",
-              width: 200,
-              padding: "10px 0",
-              display: "flex",
-              flexDirection: "column",
-              gap: 6,
-            }}
-          >
-            <div
-              style={{
-                color: "white",
-                fontWeight: 700,
-                fontSize: 22,
-                letterSpacing: "0.06em",
-                lineHeight: 1,
-              }}
-            >
-              SPIE
-            </div>
-            <div style={{ height: 2, width: 56, background: "#F59A23" }} />
-            <div
-              style={{
-                color: "white",
-                fontWeight: 400,
-                fontSize: 14,
-                letterSpacing: "0.06em",
-                lineHeight: 1,
-              }}
-            >
-              Batignolles
-            </div>
-          </div>
+          <img
+            src={spieBatignollesLogo}
+            alt="SPIE Batignolles"
+            style={{ height: 56, width: "auto", display: "block" }}
+          />
         </div>
 
         {/* Middle: typewriter headline */}
